@@ -1,0 +1,401 @@
+[
+  {
+    "fields": [
+      {
+        "description": "Only used in the admin dashboard.",
+        "name": "title",
+        "type": "string",
+        "title": "Internal title"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "name": "image",
+        "type": "image"
+      },
+      {
+        "name": "caption",
+        "type": "string",
+        "title": "Caption / materials"
+      },
+      {
+        "options": {
+          "layout": "radio",
+          "list": [
+            {
+              "title": "Jewelry",
+              "value": "jewelry"
+            },
+            {
+              "title": "Sculpture",
+              "value": "sculpture"
+            }
+          ]
+        },
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "valid",
+                "constraint": [
+                  "jewelry",
+                  "sculpture"
+                ]
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "category",
+        "type": "string",
+        "title": "Portfolio"
+      },
+      {
+        "description": "Lower numbers appear first.",
+        "name": "displayOrder",
+        "type": "number",
+        "title": "Display order"
+      },
+      {
+        "initialValue": true,
+        "name": "published",
+        "type": "boolean",
+        "title": "Show on website"
+      },
+      {
+        "hidden": true,
+        "name": "sourceCollection",
+        "type": "string",
+        "title": "Legacy source collection"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "uri",
+                "constraint": {
+                  "options": {
+                    "scheme": [
+                      "/^http$/",
+                      "/^https$/"
+                    ],
+                    "allowRelative": false,
+                    "relativeOnly": false,
+                    "allowCredentials": false
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "hidden": true,
+        "name": "legacyUrl",
+        "type": "url",
+        "title": "Legacy image URL"
+      }
+    ],
+    "name": "portfolioImage",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "description": "Used for accessibility and in the admin dashboard.",
+        "name": "title",
+        "type": "string",
+        "title": "Internal title"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "uri",
+                "constraint": {
+                  "options": {
+                    "scheme": [
+                      "/^http$/",
+                      "/^https$/"
+                    ],
+                    "allowRelative": false,
+                    "relativeOnly": false,
+                    "allowCredentials": false
+                  }
+                }
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "youtubeUrl",
+        "type": "url",
+        "title": "YouTube URL"
+      },
+      {
+        "rows": 10,
+        "name": "description",
+        "type": "text"
+      },
+      {
+        "description": "Lower numbers appear first.",
+        "name": "displayOrder",
+        "type": "number",
+        "title": "Display order"
+      },
+      {
+        "initialValue": true,
+        "name": "published",
+        "type": "boolean",
+        "title": "Show on website"
+      }
+    ],
+    "name": "videoProject",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "title",
+        "type": "string"
+      },
+      {
+        "name": "publishedAt",
+        "type": "datetime",
+        "title": "Publish date"
+      },
+      {
+        "of": [
+          {
+            "lists": [
+              {
+                "value": "bullet",
+                "title": "Bulleted list"
+              },
+              {
+                "value": "number",
+                "title": "Numbered list"
+              }
+            ],
+            "marks": {
+              "annotations": [
+                {
+                  "i18nTitleKey": "inputs.portable-text.annotation.link",
+                  "options": {
+                    "modal": {
+                      "type": "popover"
+                    }
+                  },
+                  "fields": [
+                    {
+                      "validation": [
+                        {
+                          "level": "error",
+                          "rules": [
+                            {
+                              "flag": "uri",
+                              "constraint": {
+                                "options": {
+                                  "scheme": [
+                                    "/^http$/",
+                                    "/^https$/",
+                                    "/^tel$/",
+                                    "/^mailto$/"
+                                  ],
+                                  "allowRelative": true,
+                                  "relativeOnly": false,
+                                  "allowCredentials": false
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      ],
+                      "description": "A valid web, email, phone, or relative link.",
+                      "name": "href",
+                      "type": "url",
+                      "title": "Link"
+                    }
+                  ],
+                  "name": "link",
+                  "type": "object"
+                }
+              ],
+              "decorators": [
+                {
+                  "value": "strong",
+                  "title": "Strong"
+                },
+                {
+                  "value": "em",
+                  "title": "Italic"
+                },
+                {
+                  "value": "code",
+                  "title": "Code"
+                },
+                {
+                  "value": "underline",
+                  "title": "Underline"
+                },
+                {
+                  "value": "strike-through",
+                  "title": "Strike"
+                }
+              ]
+            },
+            "of": [],
+            "styles": [
+              {
+                "value": "normal",
+                "title": "Normal"
+              },
+              {
+                "value": "h1",
+                "title": "Heading 1"
+              },
+              {
+                "value": "h2",
+                "title": "Heading 2"
+              },
+              {
+                "value": "h3",
+                "title": "Heading 3"
+              },
+              {
+                "value": "h4",
+                "title": "Heading 4"
+              },
+              {
+                "value": "h5",
+                "title": "Heading 5"
+              },
+              {
+                "value": "h6",
+                "title": "Heading 6"
+              },
+              {
+                "value": "blockquote",
+                "title": "Quote"
+              }
+            ],
+            "type": "block"
+          },
+          {
+            "options": {
+              "hotspot": true
+            },
+            "fields": [
+              {
+                "name": "caption",
+                "type": "string"
+              },
+              {
+                "description": "Short description for accessibility.",
+                "name": "alt",
+                "type": "string",
+                "title": "Alternative text"
+              }
+            ],
+            "type": "image"
+          }
+        ],
+        "name": "body",
+        "type": "array",
+        "title": "Post"
+      },
+      {
+        "initialValue": true,
+        "name": "published",
+        "type": "boolean",
+        "title": "Show on website"
+      }
+    ],
+    "name": "musing",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "rows": 14,
+        "name": "bio",
+        "type": "text",
+        "title": "Biography"
+      },
+      {
+        "options": {
+          "accept": ".pdf"
+        },
+        "name": "cv",
+        "type": "file",
+        "title": "CV PDF"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "uri",
+                "constraint": {
+                  "options": {
+                    "scheme": [
+                      "/^http$/",
+                      "/^https$/"
+                    ],
+                    "allowRelative": false,
+                    "relativeOnly": false,
+                    "allowCredentials": false
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "name": "instagram",
+        "type": "url",
+        "title": "Instagram URL"
+      },
+      {
+        "name": "email",
+        "type": "string"
+      },
+      {
+        "description": "Example: Based in San Francisco",
+        "name": "location",
+        "type": "string",
+        "title": "Location line"
+      },
+      {
+        "hidden": true,
+        "name": "cmsEnabled",
+        "type": "boolean",
+        "title": "CMS enabled"
+      }
+    ],
+    "name": "siteSettings",
+    "type": "document",
+    "title": "Site Information"
+  }
+]
